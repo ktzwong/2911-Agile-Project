@@ -1,9 +1,18 @@
+a:hover {
+    color:red
+}
+
+h1 {
+    text-align: center;
+}
+
 body {
     font-family: Arial, sans-serif;
     text-align: center;
     margin-top: 50px;
     background-color: #b85947;
 }
+
 
 .container {
     display: flex;
@@ -38,4 +47,24 @@ a.box {
     display: flex; 
     justify-content: center; 
     align-items: center; 
+}
+
+ul {
+    list-style: none;
+    margin: 0 2px;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+a {
+    text-decoration: none;
+}
+
+nav {
+    font-size: 40px;
+}
+nav.hover {
+    color: red
 }
