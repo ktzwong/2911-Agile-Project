@@ -13,13 +13,19 @@
     <div class="nav"></div>
     <nav>
         <ul>
-          <li><a href="#home"><img src="images/home.webp" alt="Home" style="width:24px;"></a></li>
-          <li><a href="#calendar"><img src="images/calendar.png" alt="Calendar" style="width:24px;"></a></li>
-          <li><a href="#notes"><img src="images/notes.png" alt="" style="width:24px;"></a></li>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Emails</a></li>
+          <li><a href="#contact">Contacts</a></li>
         </ul>
     </nav>
-
-
-
+  
+    <div class="container">
+        <div class="box">
+            <a href="{{ url_for('calendar_view') }}">Calendar</a>
+        </div>
+        <a href="notes.html" class="box">
+            <p>Notes</p>
+        </a>
+    </div>
 </body>
 </html>
