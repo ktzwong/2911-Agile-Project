@@ -11,9 +11,9 @@ To run the application
 ---
 
 # Git Commands
-## Switching Branches
-1. `git branch <development>`
-2. `git checkout <branch name here>`
+## Switching and Creating Branches
+1. Creating a branch `git branch <development>`. (Not needed if you already have another branch)
+2. Switching between branches `git checkout <branch name here>`
 - to check which branch you are in `git branch`
 
 **If you are switching between branches, make sure you are in the correct branch before pushings changes**
