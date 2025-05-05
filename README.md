@@ -9,7 +9,6 @@ To run the application
 ## Installing FullCalendar
 1. `pip install js.fullcalendar`
 
-
 # Git Commands
 ## Switching Branches
 1. `git branch <development>`
@@ -24,3 +23,4 @@ To run the application
 
 ## Cloning the Git repo
 1. `git clone <link>`
+
