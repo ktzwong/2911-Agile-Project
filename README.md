@@ -8,6 +8,7 @@ To run the application
 
 ## Installing FullCalendar
 1. `pip install js.fullcalendar`
+---
 
 # Git Commands
 ## Switching Branches
@@ -20,6 +21,14 @@ To run the application
 1. `git add .` 
 2. `git commit -m "message here"`
 3. `git push` 
+
+## Merging Branches
+**Used for when you are finished working on the development branch or whatever and it works. Now you want to push that code over to the main branch**
+**ONLY MERGE WORKING CODE ONTO MAIN**
+**To merge branches, first push changes on the branch you are working on**
+1. Switch over to the main branch ` git checkout main`
+2. Choose which branch to merge into the main branch ` git merge <development>
+3. If you want to delete the branch after merging ` git branch -d <development>
 
 ## Cloning the Git repo
 1. `git clone <link>`
