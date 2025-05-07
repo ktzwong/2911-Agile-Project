@@ -4,60 +4,15 @@ a:hover {
 
 h1 {
     text-align: center;
-<<<<<<< HEAD
-=======
     color: #EFD8CB;
->>>>>>> development
+    font-size-adjust: inherit;
 }
 
 body {
     font-family: Arial, sans-serif;
     text-align: center;
     margin-top: 50px;
-<<<<<<< HEAD
-    background-color: #b85947;
-=======
-    background-color: #388AC4;
->>>>>>> development
-}
-
-
-.container {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 40px;
-}
-
-<<<<<<< HEAD
-.box {
-    border: 2px solid #333;
-    padding: 50px;
-    width: 500px;
-    height: 500px;
-    background-color: #c5523a;
-    cursor: pointer;
-    transition: 0.3s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 30px;
-}
-
-.box:hover {
-    background-color: #4d47f7; 
-}
-
-
-=======
->>>>>>> development
-a.box {
-    text-decoration: none; 
-    color: inherit; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
+    background-color: #5789A2;
 }
 
 ul {
@@ -66,7 +21,7 @@ ul {
     padding: 0;
     display: flex;
     justify-content: space-around;
-    
+    background-color: #ACE0F9;
 }
 
 a {
@@ -76,26 +31,3 @@ a {
 nav {
     font-size: 40px;
 }
-nav.hover {
-    color: red
-<<<<<<< HEAD
-}
-=======
-}
-
-.navbar ul {
-    list-style-type: none;
-    background-color: hsl(0, 0%, 25%);
-    padding: 0px;
-    margin: 0px;
-}
-
-.navbar a{
-    color: white;
-    text-decoration: none;
-    padding: 15px;
-    display: block;
-    text-align: center;
-}   
-
->>>>>>> development

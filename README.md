@@ -36,7 +36,7 @@ To run the application
 1. Switch over to the main branch ` git checkout main`
 2. Choose which branch to merge into the main branch ` git merge <development>
 3. If you want to delete the branch after merging ` git branch -d <development>
-4. You will see a message in the terminal saying to have a comment for reason to merge, enter the message, press `esc` then `:q!` to save the message
+4. You will see a message in the terminal saying to have a comment for reason to merge, to type a message press `i` , after, press `esc` then `:q!` to save
 5. you will now need to `git push` on the main branch afterwards so that the merged code gets pushed onto github.
 
 ## Cloning the Git repo

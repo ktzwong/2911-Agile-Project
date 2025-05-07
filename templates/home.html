@@ -8,17 +8,13 @@
 </head>
 <body>
     <h1> Welcome </h1>
-
-    <h1> Agenda </h1>
     <div class="nav"></div>
     <nav>
         <ul>
-          <li><a href="#home">Home</a></li>
+          <li><a href="">Home</a></li>
           <li><a href="{{ url_for('calendar_view') }}">Calendar</a></li>
-          <li><a href="{{ url_for('notes_view') }}">Notes</a></li>
+          <li><a href="{{ url_for('calendar_view') }}">Notes</a></li> <!--Need to add URL for Notes-->
         </ul>
     </nav>
-  
-
 </body>
 </html>
