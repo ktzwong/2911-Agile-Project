@@ -8,6 +8,7 @@ To run the application
 
 ## Requirements 
 - Flask
+- SQLalchemy
 - fullcalendar
 - pytest
 
