@@ -2,12 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='notes.css') }}">
-    <title>Document</title>
 </head>
 <body>
+    <h1>📝 My Notes</h1>
+    <nav>
+        <ul>
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('calendar_view') }}">Calendar</a></li>
+          <li><a href="{{ url_for('notes_view') }}">Notes</a></li> 
+        </ul>
+    </nav>
+
+    <p>Write down anything you need to remember! To-do items, project ideas, or even reminders go here.</p>
     
-    
+    <form method="POST">
+        <input type="text" name="title" placeholder="Note title" required><br><br>
+        <textarea name="note" placeholder="Type your thoughts, plans, or tasks here..." required></textarea><br><br>
+        <button type="submit">Save Note</button>
+    </form>
+
+    {% if saved_title and saved_note %}
+        <br><hr><br>
+        <div>
+            <strong>Last saved note:</strong><br>
+            <h2>{{ saved_title }}</h2>
+            <p>{{ saved_note }}</p>
+        </div>
+    {% endif %}
 </body>
 </html>
