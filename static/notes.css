@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #b85947;
+    background-color: #5789A2;
     color: white;
     text-align: center;
     margin-top: 50px;
@@ -63,4 +63,21 @@ button:hover {
     text-align: left;
     white-space: pre-wrap;
     font-size: 18px;
+}
+
+ul {
+    list-style: none;
+    margin: 0 2px;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    background-color: #ACE0F9;
+}
+
+a {
+    text-decoration: none;
+}
+
+nav {
+    font-size: 40px;
 }
