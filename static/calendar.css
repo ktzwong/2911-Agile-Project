@@ -1,0 +1,21 @@
+
+ul {
+    list-style: none;
+    margin: 0 2px;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    background-color: #7BA8BE;
+}
+
+a {
+    text-decoration: none;
+}
+
+nav {
+    font-size: 40px;
+}
+
+h1 {
+    color: #5789A2;
+}
