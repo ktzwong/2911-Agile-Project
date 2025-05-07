@@ -6,15 +6,12 @@
 To run the application
 1. `python app.py` to run website, then click the link in terminal 
 
-<<<<<<< Updated upstream
-=======
 ## Requirements 
 - Flask
 - SQLalchemy
 - fullcalendar
 - pytest
 
->>>>>>> Stashed changes
 ## Installing FullCalendar
 1. `pip install js.fullcalendar`
 ---
