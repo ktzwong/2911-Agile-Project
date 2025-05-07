@@ -1,10 +1,13 @@
 from flask import Flask, render_template, redirect, url_for
 from pathlib import Path
+from db import db
 
 app = Flask(__name__)
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///calendar.db"
 app.instance_path = Path(" ").resolve()
 
 
+db.init_app(app)
 
 '''links to homepage '''
 @app.route("/")
