@@ -4,8 +4,10 @@ from pathlib import Path
 app = Flask(__name__)
 app.instance_path = Path(" ").resolve()
 
-# This variable temporarily stores the note (in memory)
+# This variable temporarily stores the note in like the memory
 saved_note = ""
+saved_title = "" 
+
 
 '''links to homepage '''
 @app.route("/")
@@ -20,11 +22,13 @@ def calendar_view():
 '''links to notes'''
 @app.route("/notes", methods=["GET", "POST"])
 def notes_view():
-    global saved_note
+    global saved_note, saved_title
     if request.method == "POST":
+        saved_title = request.form.get("title")
         saved_note = request.form.get("note")
         return redirect(url_for("notes_view"))
-    return render_template("notes.html", saved_note=saved_note)
+    return render_template("notes.html", saved_title=saved_title, saved_note=saved_note)
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=8888)
