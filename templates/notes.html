@@ -5,7 +5,6 @@
 <<<<<<< HEAD
     <title>Notes</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='notes.css') }}">
-
 </head>
 <body>
     <h1>📝 My Notes</h1>
@@ -13,14 +12,16 @@
     <p>Write down anything you need to remember! To-do items, project ideas, or even reminders go here.</p>
     
     <form method="POST">
-        <textarea name="note" placeholder="Type your thoughts, plans, or tasks here..."></textarea><br><br>
+        <input type="text" name="title" placeholder="Note title" required><br><br>
+        <textarea name="note" placeholder="Type your thoughts, plans, or tasks here..." required></textarea><br><br>
         <button type="submit">Save Note</button>
     </form>
 
-    {% if saved_note %}
+    {% if saved_title and saved_note %}
         <br><hr><br>
         <div>
             <strong>Last saved note:</strong><br>
+            <h2>{{ saved_title }}</h2>
             <p>{{ saved_note }}</p>
         </div>
     {% endif %}
