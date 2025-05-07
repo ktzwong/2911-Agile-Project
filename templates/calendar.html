@@ -3,13 +3,14 @@
 <head>
   <title>Calendar</title>
   <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='calendar.css') }}">
 </head>
 <body>
   <h1>My Calendar</h1>
   <nav>
     <ul>
-      <li><a href="#home"><img src="2911-Agile-Project/images/home.webp">Home</a></li>
-      <li><a href="#calendar">Calendar</a></li>
+      <li><a href="{{ url_for('home') }}"><img src="2911-Agile-Project/images/home.webp">Home</a></li>
+      <li><a href="{{ url_for('calendar_view') }}">Calendar</a></li>
       <li><a href="{{ url_for('notes_view') }}"><img src="2911-Agile-Project/images/notes.png">Notes</a></li>
     </ul>
   </nav>
