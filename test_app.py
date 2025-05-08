@@ -7,13 +7,20 @@ def client():
     with app.test_client() as client:
         yield client
 
+"""HOME TEST"""
+def test_home_route(client):
+    res = client.get('/')
+    assert res.status_code == 200
+    assert b'CalNote' in res.data
+
+"""CALENDAR TEST"""
 def test_calendar_route(client):
     res = client.get('/calendar')
     assert res.status_code == 200
     assert b'Calendar' in res.data
 
 """NOTES TEST"""
-def test_notes_get(client):
+def test_notes_route(client):
     res = client.get('/notes')
     assert res.status_code == 200
     assert b'My Notes' in res.data  
