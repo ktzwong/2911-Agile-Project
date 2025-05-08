@@ -2,18 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
-    <title>Agile_Project</title>
+    <title>CalNote</title>
 </head>
 <body>
-    <h1> CalNote </h1>
+    <h1>CalNote</h1>
+
+    
     <nav>
         <ul>
             <li><a href="{{ url_for('home') }}">🏠 Home</a></li>
-          <li><a href="{{ url_for('calendar_view') }}">📅 Calendar</a></li>
-          <li><a href="{{ url_for('notes_view') }}">📝 Notes</a></li>
+            <li><a href="{{ url_for('calendar_view') }}">📅 Calendar</a></li>
+            <li><a href="{{ url_for('notes_view') }}">📝 Notes</a></li>
         </ul>
     </nav>
+
+    {% if 'user' not in session %}
+        <h2>Login</h2>
+        {% if error %}
+            <p style="color:red;">{{ error }}</p>
+        {% endif %}
+        <form method="POST">
+            <input type="text" name="username" placeholder="Username" required><br><br>
+            <input type="password" name="password" placeholder="Password" required><br><br>
+            <button type="submit">Login</button>
+        </form>
+    {% else %}
+        <p>Welcome, {{ session['user'] }}!</p>
+        <p>You’re logged in — feel free to view your calendar or notes.</p>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    {% endif %}
 </body>
 </html>
