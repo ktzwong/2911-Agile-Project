@@ -3,16 +3,15 @@ from pathlib import Path
 
 app = Flask(__name__)
 app.instance_path = Path(" ").resolve()
-app.secret_key = "secret123"  
+app.secret_key = "secret123"
 
-# Simple user
-USER = {"username": "student", "password": "password"}
+# In-memory user storage
+users = {}
 
 # In-memory note storage
 saved_note = ""
 saved_title = ""
 
-# Homepage with login form and custom validation
 @app.route("/", methods=["GET", "POST"])
 def home():
     error = None
@@ -27,25 +26,30 @@ def home():
             username_error = "Username is required"
         if not password:
             password_error = "Password is required"
+        elif len(password) < 6:
+            password_error = "Password must be at least 6 characters"
 
         if not username_error and not password_error:
-            if username == USER["username"] and password == USER["password"]:
+            if username in users:
+                if users[username] == password:
+                    session["user"] = username
+                    return redirect(url_for("notes_view"))
+                else:
+                    error = "Incorrect password"
+            else:
+                users[username] = password
                 session["user"] = username
                 return redirect(url_for("notes_view"))
-            else:
-                error = "Invalid credentials"
 
-    return render_template("home.html", 
-                           error=error, 
-                           username_error=username_error, 
+    return render_template("home.html",
+                           error=error,
+                           username_error=username_error,
                            password_error=password_error)
 
-# Calendar page
 @app.route("/calendar")
 def calendar_view():
     return render_template("calendar.html")
 
-# Notes page (requires login)
 @app.route("/notes", methods=["GET", "POST"])
 def notes_view():
     global saved_note, saved_title
@@ -58,9 +62,10 @@ def notes_view():
         saved_note = request.form.get("note")
         return redirect(url_for("notes_view"))
 
-    return render_template("notes.html", saved_title=saved_title, saved_note=saved_note)
+    return render_template("notes.html",
+                           saved_title=saved_title,
+                           saved_note=saved_note)
 
-# Logout
 @app.route("/logout")
 def logout():
     session.pop("user", None)
