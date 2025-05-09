@@ -22,6 +22,9 @@ To run the application
 
 ## Installing SQLalchemy
 1. `pip install sqlalchemy`
+
+## Installing Pytest
+1. `pip install pytest`
 ---
 
 # Git Commands
