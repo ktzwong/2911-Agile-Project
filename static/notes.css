@@ -4,6 +4,7 @@ body {
     color: white;
     text-align: center;
     margin-top: 50px;
+  
 }
 
 h1 {
@@ -22,7 +23,7 @@ textarea {
     height: 300px;
     font-size: 18px;
     padding: 10px;
-    border: 2px solid #333;
+    border: 2px solid #229ff3;
     border-radius: 8px;
     resize: vertical;
 }
@@ -32,7 +33,7 @@ button {
     margin-top: 15px;
     padding: 10px 20px;
     border: none;
-    background-color: #4a40bf;
+    background-color: #229ff3 ;
     color: white;
     cursor: pointer;
     border-radius: 5px;
