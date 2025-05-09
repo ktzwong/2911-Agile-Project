@@ -2,10 +2,6 @@
 - **MAKE SURE YOU'RE IN THE CORRECT DIRECTORY**
 ---
 
-## Running application
-To run the application
-1. `python app.py` to run website, then click the link in terminal 
-
 ## Requirements 
 - Flask
 - SQLalchemy
@@ -13,8 +9,19 @@ To run the application
 - pytest
 - SQLite Viewer
 
+## Running application
+To run the application
+1. `python app.py` to run website, then click the link in terminal 
+2. `python manage.py` to drop and create tables
+
 ## Installing FullCalendar
 1. `pip install js.fullcalendar`
+
+## Installing Flask
+1. `pip install Flask`
+
+## Installing SQLalchemy
+1. `pip install sqlalchemy`
 ---
 
 # Git Commands
