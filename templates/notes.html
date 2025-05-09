@@ -17,6 +17,16 @@
 
     <p>Write down anything you need to remember! To-do items, project ideas, or even reminders go here.</p>
     
+    
+    <div class="search-bar">
+    <form method="get" action="{{ url_for('notes_view') }}">
+        <input type="text" name="search" placeholder="Search notes..." value="{{ query or '' }}">
+        <button type="submit"> Search</button>
+    </form>
+    <br>
+    </div>
+
+
     <form method="POST">
         <input type="text" name="title" placeholder="Note title" required><br><br>
         <textarea name="note" placeholder="Type your thoughts, plans, or tasks here..." required></textarea><br><br>
