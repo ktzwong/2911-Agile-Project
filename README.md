@@ -11,6 +11,7 @@ To run the application
 - SQLalchemy
 - fullcalendar
 - pytest
+- SQLite Viewer
 
 ## Installing FullCalendar
 1. `pip install js.fullcalendar`
