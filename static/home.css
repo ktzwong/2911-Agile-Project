@@ -4,7 +4,7 @@ a:hover {
 
 h1 {
     text-align: center;
-    color: #EFD8CB;
+    color: #060708;
     font-size-adjust: inherit;
 }
 
@@ -25,16 +25,18 @@ ul {
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
+  color: #229ff3; 
 }
+
 
 nav {
     font-size: 40px;
 }
 
 .error-msg {
-  color: #fff;
-  background-color: #3b82f6;
+  color: #c5f0fa;
+  background-color: #229ff3;
   padding: 10px;
   border-radius: 5px;
   margin-top: 10px;
