@@ -5,26 +5,40 @@ app = Flask(__name__)
 app.instance_path = Path(" ").resolve()
 app.secret_key = "secret123"  
 
-# Simple user (can be fixed later)
+# Simple user
 USER = {"username": "student", "password": "password"}
 
 # In-memory note storage
 saved_note = ""
 saved_title = ""
 
-# Homepage with login form
+# Homepage with login form and custom validation
 @app.route("/", methods=["GET", "POST"])
 def home():
     error = None
+    username_error = None
+    password_error = None
+
     if request.method == "POST":
-        username = request.form["username"]
-        password = request.form["password"]
-        if username == USER["username"] and password == USER["password"]:
-            session["user"] = username
-            return redirect(url_for("notes_view"))
-        else:
-            error = "Invalid credentials"
-    return render_template("home.html", error=error)
+        username = request.form.get("username")
+        password = request.form.get("password")
+
+        if not username:
+            username_error = "Username is required"
+        if not password:
+            password_error = "Password is required"
+
+        if not username_error and not password_error:
+            if username == USER["username"] and password == USER["password"]:
+                session["user"] = username
+                return redirect(url_for("notes_view"))
+            else:
+                error = "Invalid credentials"
+
+    return render_template("home.html", 
+                           error=error, 
+                           username_error=username_error, 
+                           password_error=password_error)
 
 # Calendar page
 @app.route("/calendar")

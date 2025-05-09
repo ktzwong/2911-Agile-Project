@@ -1,5 +1,5 @@
 a:hover {
-    color:red
+    color:rgb(212, 231, 235)
 }
 
 h1 {
@@ -32,3 +32,17 @@ nav {
     font-size: 40px;
 }
 
+.error-msg {
+  color: #fff;
+  background-color: #3b82f6;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  display: inline-block;
+  font-weight: bold;
+}
+
+input::placeholder {
+  color: #66c2fc;
+  font-style: italic;
+}
