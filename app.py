@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request, session
+from flask import Flask, render_template, redirect, url_for, request, session, flash
 from pathlib import Path
 
 app = Flask(__name__)
@@ -60,6 +60,12 @@ def notes_view():
     if request.method == "POST":
         saved_title = request.form.get("title")
         saved_note = request.form.get("note")
+
+        if not saved_title or not saved_note:
+            flash("Both title and note are required!", "error")
+            return redirect(url_for("notes_view"))
+
+        flash("Note saved successfully!", "success")
         return redirect(url_for("notes_view"))
 
     return render_template("notes.html",
