@@ -20,3 +20,10 @@ nav {
 h1 {
     color: #0c1012;
 }
+
+a:hover {
+    color: #bce9f1; 
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    transition: color 0.3s ease;
+}
