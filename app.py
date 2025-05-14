@@ -1,13 +1,14 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, jsonify
 from pathlib import Path
+from models import Note, Item
+from db import db
+
 
 app = Flask(__name__)
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///calendar.db"
 app.instance_path = Path(" ").resolve()
 
-# This variable temporarily stores the note in like the memory
-saved_note = ""
-saved_title = "" 
-
+db.init_app(app)
 
 '''links to homepage '''
 @app.route("/")
@@ -19,16 +20,21 @@ def home():
 def calendar_view():
     return render_template("calendar.html")
 
-'''links to notes'''
 @app.route("/notes", methods=["GET", "POST"])
 def notes_view():
-    global saved_note, saved_title
+    saved_title = saved_note = None
+
     if request.method == "POST":
         saved_title = request.form.get("title")
         saved_note = request.form.get("note")
-        return redirect(url_for("notes_view"))
-    return render_template("notes.html", saved_title=saved_title, saved_note=saved_note)
 
+        if saved_title and saved_note:
+            note = Note(title=saved_title, content=saved_note)
+            db.session.add(note)
+            db.session.commit()
+            return redirect(url_for("notes_view"))
+        
+    return render_template("notes.html", saved_title=saved_title, saved_note=saved_note)
 
 if __name__ == "__main__":
     app.run(debug=True, port=8888)
