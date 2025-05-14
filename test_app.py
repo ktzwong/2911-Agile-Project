@@ -10,10 +10,6 @@ def client():
             session["user"] = "student"  # Simulate login
         yield client
 
-<<<<<<< HEAD
-def test_home_page(client):
-    res = client.get('/')
-=======
 """HOME TEST"""
 def test_home_route(client):
     res = client.get('/')
@@ -23,16 +19,11 @@ def test_home_route(client):
 """CALENDAR TEST"""
 def test_calendar_route(client):
     res = client.get('/calendar')
->>>>>>> 23e97f04a8f44c58010ddafbce2aeed506bdf526
     assert res.status_code == 200
     assert b'CalNote' in res.data
 
-<<<<<<< HEAD
-def test_notes_get(client):
-=======
 """NOTES TEST"""
 def test_notes_route(client):
->>>>>>> 23e97f04a8f44c58010ddafbce2aeed506bdf526
     res = client.get('/notes')
     assert res.status_code == 200
     assert b"My Notes" in res.data
