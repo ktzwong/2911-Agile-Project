@@ -7,7 +7,7 @@ app.instance_path = Path(" ").resolve()
 # This variable temporarily stores the note in like the memory
 saved_note = ""
 saved_title = "" 
-
+notes = []
 
 '''links to homepage '''
 @app.route("/")
@@ -29,6 +29,16 @@ def notes_view():
         return redirect(url_for("notes_view"))
     return render_template("notes.html", saved_title=saved_title, saved_note=saved_note)
 
+@app.route("/notes-results", methods=["GET"])
+def notes_results():
+    query = request.args.get("search", "").lower()
+
+    filtered_notes = [
+        note for note in notes
+        if query in note["title"].lower() or query in note["content"].lower()
+    ] if query else []
+
+    return render_template("notes_results.html", query=query, notes=filtered_notes)
 
 if __name__ == "__main__":
     app.run(debug=True, port=8888)

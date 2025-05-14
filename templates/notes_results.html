@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+    <h1> Search Results</h1>
+
+    <a href="{{ url_for('notes_view') }}">← Back to Notes</a>
+
+    {% if notes %}
+        <ul>
+        {% for note in notes %}
+            <li><strong>{{ note.title }}</strong>: {{ note.content }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No notes found for "{{ query }}".</p>
+    {% endif %}
+</body>
+</html>
