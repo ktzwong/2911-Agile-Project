@@ -4,6 +4,7 @@ body {
     color: white;
     text-align: center;
     margin-top: 50px;
+  
 }
 
 h1 {
@@ -22,7 +23,7 @@ textarea {
     height: 300px;
     font-size: 18px;
     padding: 10px;
-    border: 2px solid #333;
+    border: 2px solid #229ff3;
     border-radius: 8px;
     resize: vertical;
 }
@@ -32,14 +33,14 @@ button {
     margin-top: 15px;
     padding: 10px 20px;
     border: none;
-    background-color: #4a40bf;
-    color: white;
+    background-color: #7BA8BE;
+    color:#c5f0fa ;
     cursor: pointer;
     border-radius: 5px;
 }
 
 button:hover {
-    background-color: #342f91;
+    background-color:#66c2fc  ;
 }
 
 .note-display {
@@ -80,4 +81,62 @@ a {
 
 nav {
     font-size: 40px;
+}
+
+.flash-msg {
+    text-align: center;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+.flash-msg.success {
+    background-color: #cbeffb;
+    color: #06425c;
+    border: 1px solid #9dd9eb;
+}
+
+
+.flash-msg.error {
+    background-color: #229ff3;
+    color: #c5f0fa;
+    border: none;
+}
+
+.note-display {
+    margin-top: 40px;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 30px;
+    border-radius: 12px;
+    width: 85%;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.note-label {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #229ff3;
+}
+
+.note-title-text {
+    font-size: 26px;
+    margin-bottom: 15px;
+    color: #000000;
+}
+
+.note-content {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+    white-space: pre-wrap;
+    text-align: left;
 }
