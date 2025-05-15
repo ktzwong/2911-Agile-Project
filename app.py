@@ -13,7 +13,7 @@ db.init_app(app)
 
 # In-memory user storage
 users = {}
-
+notes = []
 # Home route with login/register logic
 @app.route("/", methods=["GET", "POST"])
 def home():
@@ -82,6 +82,18 @@ def notes_view():
 def logout():
     session.pop("user", None)
     return redirect(url_for("home"))
+
+# Search feature
+@app.route("/notes_results", methods=["GET"])
+def notes_results():
+    query = request.args.get("search", "").lower()
+
+    filtered_notes = [
+        note for note in notes
+        if query in note["title"].lower() or query in note["content"].lower()
+    ] if query else []
+
+    return render_template("notes_results.html", query=query, notes=filtered_notes)
 
 # Run the app
 if __name__ == "__main__":
