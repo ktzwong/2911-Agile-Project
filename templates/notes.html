@@ -15,6 +15,14 @@
         </ul>
     </nav>
     
+    <div class="search-bar">
+        <form method="get" action="{{ url_for('notes_results') }}">
+            <input type="text" name="search" placeholder="Search notes..." value="{{ query or '' }}">
+            <button type="submit"> Search</button>
+        </form>
+        <br>
+        </div>
+    
     <h1>📝 My Notes</h1>
 
     

@@ -13,7 +13,7 @@ db.init_app(app)
 
 # In-memory user storage
 users = {}
-notes = []
+
 # Home route with login/register logic
 @app.route("/", methods=["GET", "POST"])
 def home():
@@ -88,13 +88,17 @@ def logout():
 def notes_results():
     query = request.args.get("search", "").lower()
 
-    filtered_notes = [
-        note for note in notes
-        if query in note["title"].lower() or query in note["content"].lower()
-    ] if query else []
+    if query:
+        filtered_notes = Note.query.filter(
+            (Note.title.ilike(f"%{query}%")) |
+            (Note.content.ilike(f"%{query}%"))
+        ).all()
+    else:
+        filtered_notes = []
 
     return render_template("notes_results.html", query=query, notes=filtered_notes)
 
+    
 # Run the app
 if __name__ == "__main__":
     app.run(debug=True, port=8888)
