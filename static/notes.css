@@ -147,13 +147,12 @@ a:hover {
     transition: color 0.3s ease;
 }
 
+
 .search-bar {
     position: absolute;
-    top: 50px; 
-    right: 50px;  
-    text-align: right;
+    top: 100px;  
+    right: 20px; 
 }
-
 .search-bar input {
     padding: 8px;
     border-radius: 5px;
