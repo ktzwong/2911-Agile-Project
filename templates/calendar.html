@@ -17,13 +17,45 @@
   <div id="calendar"></div>
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const calendarEl = document.getElementById('calendar');
-      const calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth'
-      });
-      calendar.render();
+  document.addEventListener('DOMContentLoaded', function () {
+    const calendarEl = document.getElementById('calendar');
+    const calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      events: '/items',
+
+   
+      dateClick: function(info) {
+        const desc = prompt("Enter item description:");
+        if (desc) {
+          fetch('/items', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              description: desc,
+              date: info.dateStr
+            })
+          })
+          .then(response => {
+            if (response.ok) {
+              calendar.refetchEvents(); // refresh calendar
+            } else {
+              alert("Failed to save item.");
+            }
+          });
+        }
+      },
+
+      eventClick: function(info) {
+        const noteId = info.event.extendedProps.note_id;
+        if (noteId) {
+          window.location.href = `/notes?id=${noteId}`;
+        }
+      }
     });
+    calendar.render();
+  });
   </script>
 </body>
 </html>

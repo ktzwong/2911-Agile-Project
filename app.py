@@ -1,7 +1,8 @@
-from flask import Flask, render_template, redirect, url_for, request, session, flash
+from flask import Flask, render_template, redirect, url_for, request, session, flash, jsonify
 from pathlib import Path
 from models import Note, Item
 from db import db
+from datetime import datetime
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///calendar.db"
@@ -53,6 +54,37 @@ def home():
 @app.route("/calendar")
 def calendar_view():
     return render_template("calendar.html")
+
+@app.route('/items', methods=['POST'])
+def create_item():
+    data = request.get_json()
+    title = data.get('description')
+    date_str = data.get('date')  
+
+    if not description or not date_str:
+        return jsonify({"error": "Missing data"}), 400
+
+    try:
+        date = datetime.strptime(date_str, '%Y-%m-%d').date()
+        item = Item(title=title, date=date)
+        db.session.add(item)
+        db.session.commit()
+        return jsonify({"message": "Item created"}), 201
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/items')
+def get_items():
+    items = db.session.execute(db.select(Item)).scalars().all()
+    return jsonify([
+        {
+            "id": item.id,
+            "title": item.description, 
+            "start": item.date.isoformat(),
+            "note_id": item.note_id
+        }
+        for item in items
+    ])
 
 # Notes page with database saving
 @app.route("/notes", methods=["GET", "POST"])
