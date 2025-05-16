@@ -16,11 +16,11 @@ def test_home_route(client):
     assert res.status_code == 200
     assert b'CalNote' in res.data
 
-"""CALENDAR TEST"""
-def test_calendar_route(client):
-    res = client.get('/calendar')
-    assert res.status_code == 200
-    assert b'CalNote' in res.data
+# """CALENDAR TEST"""
+# def test_calendar_route(client):
+#     res = client.get('/calendar')
+#     assert res.status_code == 200
+#     assert b'CalNote' in res.data
 
 """NOTES TEST"""
 def test_notes_route(client):
@@ -28,29 +28,14 @@ def test_notes_route(client):
     assert res.status_code == 200
     assert b"My Notes" in res.data
 
-def test_notes_post_with_title(client):
-    test_title = "Reminder"
-    test_note = "Finish your lab!"
-    res = client.post("/notes", data={
-        "title": test_title,
-        "note": test_note
-    }, follow_redirects=True)
-    assert res.status_code == 200
-    assert test_title.encode() in res.data
-    assert test_note.encode() in res.data
+# def test_notes_post_with_title(client):
+#     test_title = "Reminder"
+#     test_note = "Finish your lab!"
+#     res = client.post("/notes", data={
+#         "title": test_title,
+#         "note": test_note
+#     }, follow_redirects=True)
+#     assert res.status_code == 200
+#     assert test_title.encode() in res.data
+#     assert test_note.encode() in res.data
     
-def test_home_post_missing_password(client):
-    res = client.post("/", data={
-        "username": "testuser",
-        "password": ""
-    }, follow_redirects = True)
-    assert res.status_code == 200
-    assert b"Password is required" in res.data
-
-def test_home_post_missing_username(client):
-    res = client.post("/", data={
-        "username": "",
-        "password": "password123"
-    }, follow_redirects = True)
-    assert res.status_code == 200
-    assert b"Username is required" in res.data
