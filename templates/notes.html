@@ -36,6 +36,11 @@
         <button type="submit">Save Note</button>
     </form>
 
+    <a href="{{ url_for('all_notes') }}">
+    <button class="view-notes-btn">📚 View All Notes</button>
+</a>
+
+
    {% if saved_title and saved_note %}
     <br><hr><br>
     <div class="note-display">

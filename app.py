@@ -5,12 +5,9 @@ app = Flask(__name__)
 app.instance_path = Path(" ").resolve()
 app.secret_key = "secret123"
 
-# In-memory user storage
+# In-memory user and note storage
 users = {}
-
-# In-memory note storage
-saved_note = ""
-saved_title = ""
+saved_notes = []  # list of {"title": ..., "content": ...}
 
 @app.route("/", methods=["GET", "POST"])
 def home():
@@ -52,25 +49,28 @@ def calendar_view():
 
 @app.route("/notes", methods=["GET", "POST"])
 def notes_view():
-    global saved_note, saved_title
-
     if "user" not in session:
         return redirect(url_for("home"))
 
     if request.method == "POST":
-        saved_title = request.form.get("title")
-        saved_note = request.form.get("note")
+        title = request.form.get("title")
+        note = request.form.get("note")
 
-        if not saved_title or not saved_note:
+        if not title or not note:
             flash("Both title and note are required!", "error")
             return redirect(url_for("notes_view"))
 
+        saved_notes.append({"title": title, "content": note})
         flash("Note saved successfully!", "success")
         return redirect(url_for("notes_view"))
 
-    return render_template("notes.html",
-                           saved_title=saved_title,
-                           saved_note=saved_note)
+    return render_template("notes.html")
+
+@app.route("/all-notes")
+def all_notes():
+    if "user" not in session:
+        return redirect(url_for("home"))
+    return render_template("all_notes.html", notes=saved_notes)
 
 @app.route("/logout")
 def logout():

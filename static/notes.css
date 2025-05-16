@@ -140,3 +140,35 @@ nav {
     white-space: pre-wrap;
     text-align: left;
 }
+
+
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 30px 50px;
+}
+
+.note-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    color: #333;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease;
+}
+
+.note-card h3 {
+    font-size: 20px;
+    color: #1e5aa6;
+    margin-bottom: 10px;
+}
+
+.note-card p {
+    font-size: 16px;
+    white-space: pre-wrap;
+}
+
+.note-card:hover {
+    transform: scale(1.03);
+}
