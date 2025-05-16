@@ -77,6 +77,14 @@ def notes_view():
 
     return render_template("notes.html", saved_title=saved_title, saved_note=saved_note)
 
+@app.route("/all-notes")
+def all_notes():
+    if "user" not in session:
+        return redirect(url_for("home"))
+
+    notes = Note.query.all()
+    return render_template("all_notes.html", notes=notes)
+
 # Logout route
 @app.route("/logout")
 def logout():
