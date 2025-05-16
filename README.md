@@ -54,3 +54,5 @@ To run the application
 1. `git clone <link>`
 
 **Checking workflow 1**
+
+**Checking workflow 2**
