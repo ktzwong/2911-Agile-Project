@@ -18,7 +18,16 @@ p {
     margin-bottom: 30px;
 }
 
-textarea {
+.note-title {
+    height: 10px;
+    font-size: 18px;
+    padding: 10px; 
+    border: 2px solid #229ff3;
+    border-radius: 8px;
+    resize: none;
+}
+
+.note-content {
     width: 80%;
     height: 300px;
     font-size: 18px;
@@ -33,14 +42,14 @@ button {
     margin-top: 15px;
     padding: 10px 20px;
     border: none;
-    background-color: #7BA8BE;
+    background-color: rgb(25, 85, 253);
     color:#c5f0fa ;
     cursor: pointer;
     border-radius: 5px;
 }
 
 button:hover {
-    background-color:#66c2fc  ;
+    background-color:#2100ff  ;
 }
 
 .note-display {
@@ -59,7 +68,7 @@ button:hover {
     font-size: 22px;
 }
 
-.note-content {
+.note-content-text {
     margin-top: 10px;
     text-align: left;
     white-space: pre-wrap;
@@ -140,6 +149,7 @@ nav {
     white-space: pre-wrap;
     text-align: left;
 }
+
 a:hover {
     color: #bce9f1; 
     font-weight: bold;
