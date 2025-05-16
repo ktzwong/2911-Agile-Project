@@ -146,3 +146,28 @@ a:hover {
     text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
     transition: color 0.3s ease;
 }
+
+
+.search-bar {
+    position: absolute;
+    top: 100px;  
+    right: 20px; 
+}
+.search-bar input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.search-bar button {
+    padding: 8px 12px;
+    border-radius: 5px;
+    background-color: #4a40bf;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #342f91;
+}
