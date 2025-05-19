@@ -72,6 +72,20 @@ def all_notes():
         return redirect(url_for("home"))
     return render_template("all_notes.html", notes=saved_notes)
 
+@app.route("/delete-note/<int:note_index>", methods=["POST"])
+def delete_note(note_index):
+    if "user" not in session:
+        return redirect(url_for("home"))
+
+    if 0 <= note_index < len(saved_notes):
+        del saved_notes[note_index]
+        flash("Note deleted!", "success")
+    else:
+        flash("Invalid note index.", "error")
+
+    return redirect(url_for("all_notes"))
+
+
 @app.route("/logout")
 def logout():
     session.pop("user", None)
