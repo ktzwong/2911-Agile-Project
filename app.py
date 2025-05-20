@@ -61,25 +61,25 @@ def create_item():
     title = data.get('description')
     date_str = data.get('date')  
 
-    if not description or not date_str:
+    if not title or not date_str:
         return jsonify({"error": "Missing data"}), 400
-
+    
     try:
         date = datetime.strptime(date_str, '%Y-%m-%d').date()
         item = Item(title=title, date=date)
         db.session.add(item)
-        db.session.commit()
+        db.session.commit() 
         return jsonify({"message": "Item created"}), 201
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
 @app.route('/items')
 def get_items():
-    items = db.session.execute(db.select(Item)).scalars().all()
+    items = db.session.execute(db.select(Item)).scalars()
     return jsonify([
         {
             "id": item.id,
-            "title": item.description, 
+            "title": item.title, 
             "start": item.date.isoformat(),
             "note_id": item.note_id
         }
