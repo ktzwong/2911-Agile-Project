@@ -6,9 +6,10 @@ a:hover {
 }
 
 h1 {
+    color: #0c1012;
     text-align: center;
-    color: #060708;
-    font-size-adjust: inherit;
+    font-size: 48px;
+    margin-bottom: 10px;
     font-family: Arial, sans-serif;
 }
 
@@ -33,6 +34,7 @@ a {
   text-decoration: none;
   font-family: Arial, sans-serif;
   color: #2C3E50; 
+  font-size: 40px;
 }
 
 

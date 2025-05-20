@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='calendar.css') }}">
 </head>
 <body>
-  <h1>📅 My Calendar</h1>
+  
   <nav>
     <ul>
       <li><a href="{{ url_for('home') }}">🏠 Home</a></li>
@@ -14,6 +14,7 @@
       <li><a href="{{ url_for('notes_view') }}">📝 Notes</a></li>
     </ul>
   </nav>
+  <h1>📅 My Calendar</h1>
   <div id="calendar"></div>
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
   <script>
