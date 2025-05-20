@@ -9,6 +9,7 @@ h1 {
     text-align: center;
     color: #060708;
     font-size-adjust: inherit;
+    font-family: Arial, sans-serif;
 }
 
 body {
@@ -24,17 +25,20 @@ ul {
     padding: 0;
     display: flex;
     justify-content: space-around;
-    background-color: #7BA8BE;
+    background-color: #7BA8BE; 
+    font-family: Arial, sans-serif;
 }
 
 a {
   text-decoration: none;
-  color: #229ff3; 
+  font-family: Arial, sans-serif;
+  color: #2C3E50; 
 }
 
 
 nav {
     font-size: 40px;
+    font-family: Arial, sans-serif;
 }
 
 .error-msg {
@@ -45,9 +49,14 @@ nav {
   margin-top: 10px;
   display: inline-block;
   font-weight: bold;
+  font-family: Arial, sans-serif;
 }
 
 input::placeholder {
   color: #66c2fc;
   font-style: italic;
+}
+
+p {
+  font-size: 40px;
 }
