@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='notes.css') }}">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">🏠 Home</a></li>
+            <li><a href="{{ url_for('calendar_view') }}">📅 Calendar</a></li>
+        </ul>
+    </nav>
+
+    <div class="search-bar">
+        <form method="get" action="{{ url_for('notes_results') }}">
+            <input type="text" name="search" placeholder="Search notes..." value="{{ query or '' }}">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <h1> Results for "{{ query }}"</h1>
+
+    <p><a href="{{ url_for('notes_view') }}">← Back to Notes</a></p>
+
+    {% if notes %}
+        {% for note in notes %}
+            <div class="note-display">
+                <h3 class="note-title-text">{{ note.title }}</h3>
+                <p class="note-content">{{ note.content }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="note-content">No notes found for your search.</p>
+    {% endif %}
+
+</body>
+</html>

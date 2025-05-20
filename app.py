@@ -91,6 +91,22 @@ def logout():
     session.pop("user", None)
     return redirect(url_for("home"))
 
+# Search feature
+@app.route("/notes_results", methods=["GET"])
+def notes_results():
+    query = request.args.get("search", "").lower()
+
+    if query:
+        filtered_notes = Note.query.filter(
+            (Note.title.ilike(f"%{query}%")) |
+            (Note.content.ilike(f"%{query}%"))
+        ).all()
+    else:
+        filtered_notes = []
+
+    return render_template("notes_results.html", query=query, notes=filtered_notes)
+
+    
 # Run the app
 if __name__ == "__main__":
     app.run(debug=True, port=8888)

@@ -15,6 +15,14 @@
         </ul>
     </nav>
     
+    <div class="search-bar">
+        <form method="get" action="{{ url_for('notes_results') }}">
+            <input type="text" name="search" placeholder="Search notes..." value="{{ query or '' }}">
+            <button type="submit"> Search</button>
+        </form>
+        <br>
+        </div>
+    
     <h1>📝 My Notes</h1>
 
     
@@ -31,8 +39,8 @@
     <p>Write down anything you need to remember! To-do items, project ideas, or even reminders go here.</p>
     
     <form method="POST" novalidate>
-        <input type="text" name="title" placeholder="Note title"><br><br>
-        <textarea name="note" placeholder="Type your thoughts, plans, or tasks here..."></textarea><br><br>
+        <input class="note-title" name="title" placeholder="Title"><br><br>
+        <textarea class="note-content" name="note" placeholder="Type your thoughts, plans, or tasks here..."></textarea><br><br>
         <button type="submit">Save Note</button>
     </form>
 
@@ -41,7 +49,7 @@
     <div class="note-display">
         <h3 class="note-label"> Last saved note:</h3>
         <h2 class="note-title-text">{{ saved_title }}</h2>
-        <p class="note-content">{{ saved_note }}</p>
+        <p class="note-content-text">{{ saved_note }}</p>
     </div>
 {% endif %}
 
