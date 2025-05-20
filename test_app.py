@@ -16,19 +16,17 @@ def test_home_route(client):
     assert res.status_code == 200
     assert b'CalNote' in res.data
 
-<<<<<<< HEAD
 """CALENDAR TEST"""
 def test_calendar_route(client):
     res = client.get('/calendar')
     assert res.status_code == 200
     assert b'Calendar' in res.data
-=======
+    
 # """CALENDAR TEST"""
 # def test_calendar_route(client):
 #     res = client.get('/calendar')
 #     assert res.status_code == 200
 #     assert b'CalNote' in res.data
->>>>>>> workflow
 
 """NOTES TEST"""
 def test_notes_route(client):
@@ -36,7 +34,6 @@ def test_notes_route(client):
     assert res.status_code == 200
     assert b"My Notes" in res.data
 
-<<<<<<< HEAD
 def test_notes_post_with_title(client):
     test_title = "Reminder"
     test_note = "Finish your lab!"
@@ -76,7 +73,6 @@ def test_notes_post_with_nothing(client):
     }, follow_redirects=True)
     assert res.status_code == 200
     assert b"Both fields are required!" in res.data
-=======
 # def test_notes_post_with_title(client):
 #     test_title = "Reminder"
 #     test_note = "Finish your lab!"
@@ -87,4 +83,3 @@ def test_notes_post_with_nothing(client):
 #     assert res.status_code == 200
 #     assert test_title.encode() in res.data
 #     assert test_note.encode() in res.data
->>>>>>> workflow

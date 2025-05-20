@@ -77,6 +77,7 @@ def notes_view():
 
     return render_template("notes.html", saved_title=saved_title, saved_note=saved_note)
 
+# View all notes
 @app.route("/all-notes")
 def all_notes():
     if "user" not in session:
@@ -84,6 +85,18 @@ def all_notes():
 
     notes = Note.query.all()
     return render_template("all_notes.html", notes=notes)
+
+# ✅ Delete a note
+@app.route("/delete_note/<int:note_id>", methods=["POST"])
+def delete_note(note_id):
+    note = Note.query.get(note_id)
+    if note:
+        db.session.delete(note)
+        db.session.commit()
+        flash("Note deleted!", "success")
+    else:
+        flash("Note not found.", "error")
+    return redirect(url_for("all_notes"))
 
 # Logout route
 @app.route("/logout")
@@ -106,7 +119,6 @@ def notes_results():
 
     return render_template("notes_results.html", query=query, notes=filtered_notes)
 
-    
 # Run the app
 if __name__ == "__main__":
     app.run(debug=True, port=8888)
