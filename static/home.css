@@ -1,23 +1,16 @@
-a:hover {
-    color: #bce9f1; 
-    font-weight: bold;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-    transition: color 0.3s ease;
-}
-
-h1 {
-    color: #0c1012;
-    text-align: center;
-    font-size: 48px;
-    margin-bottom: 10px;
-    font-family: Arial, sans-serif;
-}
-
+/* General layout */
 body {
     font-family: Arial, sans-serif;
+    background-color: #5789A2;
+    color: white;
     text-align: center;
     margin-top: 50px;
-    background-color: #5789A2;
+}
+
+/* Navigation bar */
+nav {
+    font-size: 40px;
+    font-family: Arial, sans-serif;
 }
 
 ul {
@@ -26,39 +19,85 @@ ul {
     padding: 0;
     display: flex;
     justify-content: space-around;
-    background-color: #7BA8BE; 
-    font-family: Arial, sans-serif;
+    background-color: #7BA8BE;
 }
 
 a {
-  text-decoration: none;
-  font-family: Arial, sans-serif;
-  color: #2C3E50; 
-  font-size: 40px;
-}
-
-
-nav {
-    font-size: 40px;
+    text-decoration: none;
     font-family: Arial, sans-serif;
+    color: #2C3E50;
+    font-size: 40px;
 }
 
-.error-msg {
-  color: #c5f0fa;
-  background-color: #229ff3;
-  padding: 10px;
-  border-radius: 5px;
-  margin-top: 10px;
-  display: inline-block;
-  font-weight: bold;
-  font-family: Arial, sans-serif;
+a:hover {
+    color: #bce9f1;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(252, 249, 249, 0.2);
+    transition: color 0.3s ease;
+}
+
+/* Headings */
+h1 {
+    color: #ffffff;
+    text-align: center;
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 32px;
+    color: white;
+    margin-bottom: 30px;
+}
+
+/* Paragraphs */
+p {
+    font-size: 40px;
+}
+
+/* Form inputs */
+input[type="text"],
+input[type="password"] {
+    padding: 10px;
+    width: 220px;
+    font-size: 16px;
+    border: 2px solid #229ff3;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    text-align: left;
 }
 
 input::placeholder {
-  color: #66c2fc;
-  font-style: italic;
+    color: #66c2fc;
+    font-style: italic;
 }
 
-p {
-  font-size: 40px;
+/* Flash & error messages */
+.error-msg {
+    color: #c5f0fa;
+    background-color: #229ff3;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    display: inline-block;
+    font-weight: bold;
+}
+
+/* Buttons */
+.btn-style {
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #1a57ff;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-style:hover {
+    background-color: #0040ff;
 }
