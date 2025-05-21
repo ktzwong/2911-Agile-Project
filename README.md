@@ -1,6 +1,8 @@
 # README notes
 - **MAKE SURE YOU'RE IN THE CORRECT DIRECTORY**
 ---
+## Running app
+1. run with `http://127.0.0.1:8888/api`
 
 ## Requirements 
 - Flask

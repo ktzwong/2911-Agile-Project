@@ -9,9 +9,9 @@
   
   <nav>
     <ul>
-      <li><a href="{{ url_for('home') }}">🏠 Home</a></li>
+      <li><a href="{{ url_for('api.home') }}">🏠 Home</a></li>
       
-      <li><a href="{{ url_for('notes_view') }}">📝 Notes</a></li>
+      <li><a href="{{ url_for('api.notes_view') }}">📝 Notes</a></li>
     </ul>
   </nav>
   <h1>📅 My Calendar</h1>
@@ -31,14 +31,14 @@
   const calendarEl = document.getElementById('calendar');
   const calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: 'dayGridMonth',
-    events: '/items',
+    events: '/api/items',
 
     dateClick: function(info) {
       const desc = prompt("Enter item description:");
       const noteId = document.getElementById("noteSelect").value;
 
       if (desc) {
-        fetch('/items', {
+        fetch('/api/items', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -57,7 +57,7 @@
         })
         .then(data => {
           if (data.note_id) {
-            window.location.href = `/notes?id=${data.note_id}`;
+            window.location.href = `/api/notes?id=${data.note_id}`;
           } else {
             calendar.refetchEvents();
           }
@@ -71,7 +71,7 @@
     eventClick: function(info) {
       const noteId = info.event.extendedProps.note_id;
       if (noteId) {
-        window.location.href = `/notes?id=${noteId}`;
+        window.location.href = `/api/notes?id=${noteId}`;
       }
     }
   });
