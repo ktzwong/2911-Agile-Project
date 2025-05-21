@@ -15,15 +15,17 @@
     </ul>
   </nav>
   <h1>📅 My Calendar</h1>
-  <div id="calendar"></div>
-  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+    <div id ="dropdown">
   <label for="noteSelect">Link to Note:</label>
-<select id="noteSelect">
+  <select id="noteSelect">
   <option value="">-- None --</option>
   {% for note in notes %}
     <option value="{{ note.id }}">{{ note.title }}</option>
   {% endfor %}
 </select>
+  </div>
+  <div id="calendar"></div>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
   <script>
  document.addEventListener('DOMContentLoaded', function () {
   const calendarEl = document.getElementById('calendar');

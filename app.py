@@ -53,8 +53,8 @@ def home():
 # Calendar page
 @app.route("/calendar")
 def calendar_view():
-    note = db.session.execute(db.select(Note)).scalars()
-    return render_template("calendar.html",note=note)
+    notes = db.session.execute(db.select(Note)).scalars()
+    return render_template("calendar.html",notes=notes)
 
 @app.route('/items', methods=['POST'])
 def create_item():
@@ -92,10 +92,19 @@ def get_items():
 @app.route("/notes", methods=["GET", "POST"])
 def notes_view():
     saved_title = saved_note = None
-
+    note = None
     if "user" not in session:
         return redirect(url_for("home"))
-
+    
+    note_id = request.args.get("id")
+    if note_id:
+        try:
+            note = db.session.get(Note, note_id)
+            return render_template("notes.html", note=note)
+        except (ValueError, TypeError):
+            flash("Invalid note ID", "error")
+            return redirect(url_for("notes_view"))
+        
     if request.method == "POST":
         saved_title = request.form.get("title")
         saved_note = request.form.get("note")

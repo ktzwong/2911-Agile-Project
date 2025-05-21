@@ -24,12 +24,6 @@ def test_calendar_route(client):
     assert res.status_code == 200
     assert b'Calendar' in res.data
     
-# """CALENDAR TEST"""
-# def test_calendar_route(client):
-#     res = client.get('/calendar')
-#     assert res.status_code == 200
-#     assert b'CalNote' in res.data
-
 """NOTES TEST"""
 def test_notes_route(client):
     res = client.get('/notes')
@@ -77,17 +71,6 @@ def test_notes_post_with_nothing(client):
     }, follow_redirects=True)
     assert res.status_code == 200
     assert b"Both fields are required!" in res.data
-# def test_notes_post_with_title(client):
-#     test_title = "Reminder"
-#     test_note = "Finish your lab!"
-#     res = client.post("/notes", data={
-#         "title": test_title,
-#         "note": test_note
-#     }, follow_redirects=True)
-#     assert res.status_code == 200
-#     assert test_title.encode() in res.data
-#     assert test_note.encode() in res.data
-
 
 #NEW
 def test_all_notes_route(client):
@@ -116,11 +99,9 @@ def test_logout_redirects_home(client):
 def test_search_empty_query(client):
     res = client.get('/notes_results?search=')
     assert res.status_code == 200
-    assert b"no notes found" in res.data
+    assert b"No notes found for your search." in res.data
 
 
 def test_search_noneexistent_note(client):
     res = client.get('/notes_results?search=doesnotexist')
     assert res.status_code == 200
-
-

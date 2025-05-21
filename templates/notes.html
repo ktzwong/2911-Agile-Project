@@ -36,7 +36,20 @@
     {% endwith %}
 
     <p>Write down anything you need to remember! To-do items, project ideas, or even reminders go here.</p>
-    
+
+    {% if note %}
+      <div class="note-display">
+          <h3 class="note-label">📝 Linked Note:</h3>
+          <h2 class="note-title-text">{{ note.title }}</h2>
+          <p class="note-content-text">{{ note.content }}</p>
+      </div>
+      <br>
+      <a href="{{ url_for('notes_view') }}">
+          <button class="view-notes-btn">➕ Add New Note</button>
+      </a>
+
+{% else %}
+
     <form method="POST" novalidate>
         <input class="note-title" name="title" placeholder="Title"><br><br>
         <textarea class="note-content" name="note" placeholder="Type your thoughts, plans, or tasks here..."></textarea><br><br>
@@ -55,7 +68,7 @@
 <a href="{{ url_for('all_notes') }}">
     <button class="view-notes-btn">📚 View All Notes</button>
 </a>
-
+{% endif %}
 
 </body>
 </html>

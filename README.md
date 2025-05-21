@@ -36,6 +36,10 @@ To run the application
 2. `git commit -m "message here"`
 3. `git push` 
 
+## Fetching Branches
+1. `git fetch origin <branch>` downloads up to date data of branch
+2. `git pull origin branch` downloads and auto merges 
+
 ## Merging Branches
 **Used for when you are finished working on the development branch or whatever and it works. Now you want to push that code over to the main branch**
 **ONLY MERGE WORKING CODE ONTO MAIN**
@@ -45,11 +49,8 @@ To run the application
 2. Choose which branch to merge into the main branch ` git merge <development>
 3. If you want to delete the branch after merging ` git branch -d <development>
 4. You will see a message in the terminal saying to have a comment for reason to merge, to type a message press `i` , after, press `esc` then `:q!` to save
-5. you will now need to `git push` on the main branch afterwards so that the merged code gets pushed onto github.
+5. you will now need to `git push origin <branch>` on the main branch afterwards so that the merged code gets pushed onto github.
 
 ## Cloning the Git repo
 1. `git clone <link>`
 
-**Checking workflow 1**
-
-**Checking workflow 2**

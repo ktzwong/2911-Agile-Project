@@ -84,3 +84,10 @@ a:hover {
     background-color: #2100ff !important;
 }
 
+#dropdown {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-family: Arial, sans-serif;
+}
