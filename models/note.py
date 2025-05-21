@@ -1,6 +1,6 @@
 from db import db
 from sqlalchemy import Integer, String,Text
-from sqlalchemy.orm import mapped_column
+from sqlalchemy.orm import mapped_column, relationship
 
 
 class Note(db.Model):
@@ -10,6 +10,7 @@ class Note(db.Model):
     title = mapped_column(String)
     content = mapped_column(Text)
 
+    items = relationship('Item', back_populates='note')
     
     def to_json(self):
         return {"id": self.id, 

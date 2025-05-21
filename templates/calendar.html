@@ -17,14 +17,65 @@
   <h1>📅 My Calendar</h1>
   <div id="calendar"></div>
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+  <label for="noteSelect">Link to Note:</label>
+<select id="noteSelect">
+  <option value="">-- None --</option>
+  {% for note in notes %}
+    <option value="{{ note.id }}">{{ note.title }}</option>
+  {% endfor %}
+</select>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const calendarEl = document.getElementById('calendar');
-      const calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth'
-      });
-      calendar.render();
-    });
+ document.addEventListener('DOMContentLoaded', function () {
+  const calendarEl = document.getElementById('calendar');
+  const calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    events: '/items',
+
+    dateClick: function(info) {
+      const desc = prompt("Enter item description:");
+      const noteId = document.getElementById("noteSelect").value;
+
+      if (desc) {
+        fetch('/items', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            description: desc,
+            date: info.dateStr,
+            note_id: noteId || null
+          })
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Failed to save item.");
+          }
+          return response.json(); 
+        })
+        .then(data => {
+          if (data.note_id) {
+            window.location.href = `/notes?id=${data.note_id}`;
+          } else {
+            calendar.refetchEvents();
+          }
+        })
+        .catch(err => {
+          alert(err.message);
+        });
+      }
+    },
+
+    eventClick: function(info) {
+      const noteId = info.event.extendedProps.note_id;
+      if (noteId) {
+        window.location.href = `/notes?id=${noteId}`;
+      }
+    }
+  });
+
+  calendar.render();
+});
   </script>
 </body>
 </html>

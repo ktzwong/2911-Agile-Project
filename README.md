@@ -14,9 +14,6 @@ To run the application
 1. `python app.py` to run website, then click the link in terminal 
 2. `python manage.py` to drop and create tables
 
-## Installing FullCalendar
-1. `pip install js.fullcalendar`
-
 ## Installing Flask
 1. `pip install Flask`
 
@@ -53,3 +50,6 @@ To run the application
 ## Cloning the Git repo
 1. `git clone <link>`
 
+**Checking workflow 1**
+
+**Checking workflow 2**
