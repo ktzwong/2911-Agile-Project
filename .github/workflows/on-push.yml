@@ -21,5 +21,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Initialize database
+        run: |
+          python -c "from app import db, app; app.app_context().push(); db.create_all()"
+
       - name: Run tests
         run: pytest  

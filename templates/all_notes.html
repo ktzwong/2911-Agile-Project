@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Saved Notes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='notes.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">🏠 Home</a></li>
+            <li><a href="{{ url_for('calendar_view') }}">📅 Calendar</a></li>
+            <li><a href="{{ url_for('notes_view') }}">📝 Notes</a></li>
+        </ul>
+    </nav>
+
+    <h1>📚 All Saved Notes</h1>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=True) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash-msg {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    {% if notes %}
+        <div class="notes-grid">
+            {% for note in notes %}
+                <div class="note-card">
+                    <h3>{{ note.title }}</h3>
+                    <p>{{ note.content }}</p>
+
+                    <form action="{{ url_for('delete_note', note_id=note.id) }}" method="POST">
+                        <button type="submit" class="delete-btn">🗑 Delete</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No notes saved yet.</p>
+    {% endif %}
+</body>
+</html>

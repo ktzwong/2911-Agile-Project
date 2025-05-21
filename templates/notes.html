@@ -11,7 +11,6 @@
         <ul>
           <li><a href="{{ url_for('home') }}">🏠 Home</a></li>
           <li><a href="{{ url_for('calendar_view') }}">📅 Calendar</a></li>
-         
         </ul>
     </nav>
     
@@ -37,10 +36,23 @@
     {% endwith %}
 
     <p>Write down anything you need to remember! To-do items, project ideas, or even reminders go here.</p>
-    
+
+    {% if note %}
+      <div class="note-display">
+          <h3 class="note-label">📝 Linked Note:</h3>
+          <h2 class="note-title-text">{{ note.title }}</h2>
+          <p class="note-content-text">{{ note.content }}</p>
+      </div>
+      <br>
+      <a href="{{ url_for('notes_view') }}">
+          <button class="view-notes-btn">➕ Add New Note</button>
+      </a>
+
+{% else %}
+
     <form method="POST" novalidate>
-        <input type="text" name="title" placeholder="Note title"><br><br>
-        <textarea name="note" placeholder="Type your thoughts, plans, or tasks here..."></textarea><br><br>
+        <input class="note-title" name="title" placeholder="Title"><br><br>
+        <textarea class="note-content" name="note" placeholder="Type your thoughts, plans, or tasks here..."></textarea><br><br>
         <button type="submit">Save Note</button>
     </form>
 
@@ -49,8 +61,13 @@
     <div class="note-display">
         <h3 class="note-label"> Last saved note:</h3>
         <h2 class="note-title-text">{{ saved_title }}</h2>
-        <p class="note-content">{{ saved_note }}</p>
+        <p class="note-content-text">{{ saved_note }}</p>
     </div>
+{% endif %}
+
+<a href="{{ url_for('all_notes') }}">
+    <button class="view-notes-btn">📚 View All Notes</button>
+</a>
 {% endif %}
 
 </body>

@@ -1,21 +1,21 @@
-a:hover {
-    color: #bce9f1; 
-    font-weight: bold;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-    transition: color 0.3s ease;
-}
-
-h1 {
-    text-align: center;
-    color: #060708;
-    font-size-adjust: inherit;
-}
-
+/* General layout */
 body {
     font-family: Arial, sans-serif;
+    background-color: #5789A2;
+    color: white;
     text-align: center;
     margin-top: 50px;
-    background-color: #5789A2;
+    background: linear-gradient(to bottom right, #1e7099, #a4dfff);
+    height: 100vh;
+    margin: 50;
+}
+
+
+
+/* Navigation bar */
+nav {
+    font-size: 40px;
+    font-family: Arial, sans-serif;
 }
 
 ul {
@@ -28,26 +28,87 @@ ul {
 }
 
 a {
-  text-decoration: none;
-  color: #229ff3; 
-}
-
-
-nav {
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    color: #2C3E50;
     font-size: 40px;
 }
 
-.error-msg {
-  color: #c5f0fa;
-  background-color: #229ff3;
-  padding: 10px;
-  border-radius: 5px;
-  margin-top: 10px;
-  display: inline-block;
-  font-weight: bold;
+a:hover {
+    color: #bce9f1;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(252, 249, 249, 0.2);
+    transition: color 0.3s ease;
+}
+
+/* Headings */
+h1 {
+    color: #ffffff;
+    text-align: center;
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 32px;
+    color: white;
+    margin-bottom: 30px;
+}
+
+/* Paragraphs */
+p {
+    font-size: 40px;
+}
+
+/* Form inputs */
+input[type="text"],
+input[type="password"] {
+    padding: 10px;
+    width: 220px;
+    font-size: 16px;
+    border: 2px solid #229ff3;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    text-align: left;
 }
 
 input::placeholder {
-  color: #66c2fc;
-  font-style: italic;
+    color: #66c2fc;
+    font-style: italic;
 }
+
+/* Flash & error messages */
+.error-msg {
+    color: #c5f0fa;
+    background-color: #229ff3;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    display: inline-block;
+    font-weight: bold;
+}
+
+/* Buttons */
+.btn-style {
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #1a57ff;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-style:hover {
+    background-color: #0040ff;
+}
+
+.btn-style:hover {
+    background-color: #0040ff;
+    transform: translateY(-2px);
+    transition: all 0.2s ease;
+} 

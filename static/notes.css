@@ -1,21 +1,24 @@
+
+/* General Page Style */
 body {
     font-family: Arial, sans-serif;
-    background-color: #5789A2;
+     background: linear-gradient(to bottom right, #1e7099, #a4dfff);
     color: white;
     text-align: center;
     margin-top: 50px;
-  
 }
 
 h1 {
     text-align: center;
     font-size: 48px;
     margin-bottom: 10px;
+    font-family: Arial, sans-serif;
 }
 
 p {
     font-size: 20px;
     margin-bottom: 30px;
+    font-family: Arial, sans-serif;
 }
 
 textarea {
@@ -26,6 +29,7 @@ textarea {
     border: 2px solid #229ff3;
     border-radius: 8px;
     resize: vertical;
+    font-family: Arial, sans-serif;
 }
 
 button {
@@ -37,6 +41,7 @@ button {
     color:#c5f0fa ;
     cursor: pointer;
     border-radius: 5px;
+    font-family: Arial, sans-serif;
 }
 
 button:hover {
@@ -53,10 +58,12 @@ button:hover {
     margin-left: auto;
     margin-right: auto;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    font-family: Arial, sans-serif;
 }
 
 .note-display strong {
     font-size: 22px;
+    font-family: Arial, sans-serif;
 }
 
 .note-content {
@@ -64,6 +71,7 @@ button:hover {
     text-align: left;
     white-space: pre-wrap;
     font-size: 18px;
+    font-family: Arial, sans-serif;
 }
 
 ul {
@@ -73,16 +81,68 @@ ul {
     display: flex;
     justify-content: space-around;
     background-color: #7BA8BE;
+    font-family: Arial, sans-serif;
 }
 
 a {
     text-decoration: none;
+    font-family: Arial, sans-serif;
+    color: #2C3E50; 
+}
+
+a:hover {
+    color: #bce9f1; 
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    transition: color 0.3s ease;
 }
 
 nav {
     font-size: 40px;
+    font-family: Arial, sans-serif;
 }
 
+/* Note Input Fields */
+.note-title {
+    height: 10px;
+    font-size: 18px;
+    padding: 10px;
+    border: 2px solid #229ff3;
+    border-radius: 8px;
+    resize: none;
+}
+
+.note-content {
+    width: 80%;
+    height: 300px;
+    font-size: 18px;
+    padding: 10px;
+    border: 2px solid #229ff3;
+    border-radius: 8px;
+    resize: vertical;
+    line-height: 1.6;
+    color: #333;
+    white-space: pre-wrap;
+    text-align: left;
+}
+
+/* Buttons */
+button {
+    font-size: 18px;
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    background-color: rgb(25, 85, 253);
+    color: #c5f0fa;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #2100ff;
+}
+
+/* Flash Messages */
 .flash-msg {
     text-align: center;
     max-width: 600px;
@@ -93,13 +153,11 @@ nav {
     font-weight: bold;
 }
 
-
 .flash-msg.success {
     background-color: #cbeffb;
     color: #06425c;
     border: 1px solid #9dd9eb;
 }
-
 
 .flash-msg.error {
     background-color: #229ff3;
@@ -107,6 +165,7 @@ nav {
     border: none;
 }
 
+/* Note Display Section */
 .note-display {
     margin-top: 40px;
     background-color: #ffffff;
@@ -121,9 +180,9 @@ nav {
     text-align: center;
 }
 
+.note-display strong,
 .note-label {
     font-size: 22px;
-    margin-bottom: 10px;
     color: #229ff3;
 }
 
@@ -133,26 +192,52 @@ nav {
     color: #000000;
 }
 
-.note-content {
+.note-content-text {
     font-size: 18px;
-    line-height: 1.6;
-    color: #333;
-    white-space: pre-wrap;
     text-align: left;
-}
-a:hover {
-    color: #bce9f1; 
-    font-weight: bold;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-    transition: color 0.3s ease;
+    white-space: pre-wrap;
 }
 
+/* Notes Grid for All Notes Page */
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 30px 50px;
+}
 
+.note-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    color: #333;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease;
+}
+
+.note-card h3 {
+    font-size: 20px;
+    color: #1e5aa6;
+    margin-bottom: 10px;
+}
+
+.note-card p {
+    font-size: 16px;
+    white-space: pre-wrap;
+}
+
+.note-card:hover {
+    transform: scale(1.03);
+}
+
+/* Search Bar */
 .search-bar {
     position: absolute;
     top: 100px;  
-    right: 20px; 
+    right: 20px;
+    font-family: Arial, sans-serif; 
 }
+
 .search-bar input {
     padding: 8px;
     border-radius: 5px;
@@ -170,4 +255,24 @@ a:hover {
 
 .search-bar button:hover {
     background-color: #342f91;
+}
+
+.flash-msg.success {
+    background-color:#229ff3;
+    color:#c5f0fa;
+    padding: 12px;
+    margin: 15px auto;
+    border-radius: 8px;
+    font-weight: bold;
+    max-width: 500px;
+}
+
+.flash-msg.error {
+    background-color:#229ff3  ;
+    color: #c5f0fa;
+    padding: 12px;
+    margin: 15px auto;
+    border-radius: 8px;
+    font-weight: bold;
+    max-width: 500px;
 }
