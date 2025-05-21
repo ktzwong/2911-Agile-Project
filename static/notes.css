@@ -2,7 +2,7 @@
 /* General Page Style */
 body {
     font-family: Arial, sans-serif;
-    background-color: #5789A2;
+     background: linear-gradient(to bottom right, #1e7099, #a4dfff);
     color: white;
     text-align: center;
     margin-top: 50px;
