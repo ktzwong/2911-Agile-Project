@@ -22,7 +22,8 @@ jobs:
           pip install -r requirements.txt
 
       - name: Initialize database
-        run: python -c "from app import db, app; with app.app_context(): db.create_all()"
+        run: |
+          python -c "from app import db, app; with app.app_context(): db.create_all()"
 
       - name: Test with pytest
         run: pytest
