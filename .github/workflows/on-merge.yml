@@ -23,7 +23,7 @@ jobs:
 
       - name: Initialize database
         run: |
-          python -c "from app import db, app; with app.app_context(): db.create_all()"
+          python -c "from app import db, app; app.app_context().push(); db.create_all()"
 
       - name: Test with pytest
         run: pytest
