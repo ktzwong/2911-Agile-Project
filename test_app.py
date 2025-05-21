@@ -113,6 +113,14 @@ def test_logout_redirects_home(client):
     assert res.status_code == 200
     assert b"Login" in res.data
 
+def test_search_empty_query(client):
+    res = client.get('/notes_results?search=')
+    assert res.status_code == 200
+    assert b"no notes found" in res.data
 
+
+def test_search_noneexistent_note(client):
+    res = client.get('/notes_results?search=doesnotexist')
+    assert res.status_code == 200
 
 
