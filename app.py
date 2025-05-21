@@ -53,23 +53,25 @@ def home():
 # Calendar page
 @app.route("/calendar")
 def calendar_view():
-    return render_template("calendar.html")
+    note = db.session.execute(db.select(Note)).scalars()
+    return render_template("calendar.html",note=note)
 
 @app.route('/items', methods=['POST'])
 def create_item():
     data = request.get_json()
     title = data.get('description')
     date_str = data.get('date')  
+    note_id = data.get('note_id')
 
     if not title or not date_str:
         return jsonify({"error": "Missing data"}), 400
     
     try:
         date = datetime.strptime(date_str, '%Y-%m-%d').date()
-        item = Item(title=title, date=date)
+        item = Item(title=title, date=date, note_id=note_id)
         db.session.add(item)
         db.session.commit() 
-        return jsonify({"message": "Item created"}), 201
+        return jsonify({"message": "Item created","note_id": note_id}), 201
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
