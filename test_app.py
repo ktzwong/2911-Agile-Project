@@ -105,3 +105,4 @@ def test_search_empty_query(client):
 def test_search_noneexistent_note(client):
     res = client.get('/notes_results?search=doesnotexist')
     assert res.status_code == 200
+
