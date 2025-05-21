@@ -2,7 +2,7 @@
 /* General Page Style */
 body {
     font-family: Arial, sans-serif;
-    background-color: #5789A2;
+     background: linear-gradient(to bottom right, #1e7099, #a4dfff);
     color: white;
     text-align: center;
     margin-top: 50px;
@@ -255,4 +255,24 @@ button:hover {
 
 .search-bar button:hover {
     background-color: #342f91;
+}
+
+.flash-msg.success {
+    background-color:#229ff3;
+    color:#c5f0fa;
+    padding: 12px;
+    margin: 15px auto;
+    border-radius: 8px;
+    font-weight: bold;
+    max-width: 500px;
+}
+
+.flash-msg.error {
+    background-color:#229ff3  ;
+    color: #c5f0fa;
+    padding: 12px;
+    margin: 15px auto;
+    border-radius: 8px;
+    font-weight: bold;
+    max-width: 500px;
 }

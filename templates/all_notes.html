@@ -16,6 +16,15 @@
 
     <h1>📚 All Saved Notes</h1>
 
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=True) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash-msg {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
     {% if notes %}
         <div class="notes-grid">
             {% for note in notes %}

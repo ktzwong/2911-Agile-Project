@@ -1,4 +1,12 @@
 
+body {
+    font-family: Arial, sans-serif;
+     background: linear-gradient(to bottom right, #1e7099, #a4dfff);
+    color: white;
+    text-align: center;
+    margin-top: 50px;
+}
+
 ul {
     list-style: none;
     margin: 0 2px;
@@ -19,7 +27,7 @@ nav {
 }
 
 h1 {
-    color: #0c1012;
+    color: #fbfbfb;
     text-align: center;
     font-size: 48px;
     margin-bottom: 10px;
@@ -29,7 +37,50 @@ h1 {
 a:hover {
     color: #bce9f1; 
     font-weight: bold;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    text-shadow: 1px 1px 3px rgb(255, 255, 255);
     transition: color 0.3s ease;
+}
+
+
+/*!important is added to override FullCalendar's default styles
+.fc is the default class that wraps the entire FullCalendar component*/
+
+.fc-col-header-cell-cushion {
+    color: white !important;
+    font-weight: bold;
+}
+
+
+.fc-daygrid-day-number {
+    color: white !important;
+    font-weight: 500;
+}
+
+
+.fc .fc-button {
+    background-color: #1a57ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    padding: 6px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.fc .fc-button {
+    background-color: rgb(25, 85, 253) !important;
+    color: #c5f0fa !important;
+    font-size: 18px;
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.fc .fc-button:hover {
+    background-color: #2100ff !important;
 }
 

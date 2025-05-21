@@ -120,7 +120,7 @@ def all_notes():
     notes = Note.query.all()
     return render_template("all_notes.html", notes=notes)
 
-# ✅ Delete a note
+# Delete a note
 @app.route("/delete_note/<int:note_id>", methods=["POST"])
 def delete_note(note_id):
     note = Note.query.get(note_id)
