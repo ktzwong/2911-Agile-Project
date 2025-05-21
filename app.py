@@ -82,7 +82,7 @@ def get_items():
         {
             "id": item.id,
             "title": item.title, 
-            "start": item.date.isoformat(),
+            "date": item.date.isoformat(),
             "note_id": item.note_id
         }
         for item in items
