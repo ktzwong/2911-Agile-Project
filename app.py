@@ -34,8 +34,8 @@ def home():
             username_error = "Username is required"
         if not password:
             password_error = "Password is required"
-        elif len(password) < 8:
-            password_error = "Password must be at least 8 characters"
+        elif len(password) < 6:
+            password_error = "Password must be at least 6 characters"
 
         if not username_error and not password_error:
             if username in users:
