@@ -8,9 +8,9 @@
 <body>
     <nav>
         <ul>
-            <li><a href="{{ url_for('home') }}">🏠 Home</a></li>
-            <li><a href="{{ url_for('calendar_view') }}">📅 Calendar</a></li>
-            <li><a href="{{ url_for('notes_view') }}">📝 Notes</a></li>
+            <li><a href="{{ url_for('api.home') }}">🏠 Home</a></li>
+            <li><a href="{{ url_for('api.calendar_view') }}">📅 Calendar</a></li>
+            <li><a href="{{ url_for('api.notes_view') }}">📝 Notes</a></li>
         </ul>
     </nav>
 
@@ -32,7 +32,7 @@
                     <h3>{{ note.title }}</h3>
                     <p>{{ note.content }}</p>
 
-                    <form action="{{ url_for('delete_note', note_id=note.id) }}" method="POST">
+                    <form action="{{ url_for('api.delete_note', note_id=note.id) }}" method="POST">
                         <button type="submit" class="delete-btn">🗑 Delete</button>
                     </form>
                 </div>

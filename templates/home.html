@@ -8,8 +8,8 @@
 <body>
     <nav>
         <ul>
-          <li><a href="{{ url_for('calendar_view') }}">📅 Calendar</a></li>
-          <li><a href="{{ url_for('notes_view') }}">📝 Notes</a></li>
+          <li><a href="{{ url_for('api.calendar_view') }}">📅 Calendar</a></li>
+          <li><a href="{{ url_for('api.notes_view') }}">📝 Notes</a></li>
         </ul>
     </nav>
 
@@ -37,7 +37,7 @@
         {% else %}
             <p class="welcome-text">Welcome, {{ session['user'] }}!</p>
             <p class="welcome-text">You’re logged in — feel free to view your calendar or notes.</p>
-            <a href="{{ url_for('logout') }}" class="btn-style">Logout</a>
+            <a href="{{ url_for('api.logout') }}" class="btn-style">Logout</a>
         {% endif %}
     </div>
 </body>
