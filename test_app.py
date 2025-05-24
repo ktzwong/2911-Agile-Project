@@ -125,3 +125,85 @@ def test_create_item_missing_data(client):
     })
     assert response.status_code == 400
     assert b"Missing data" in response.data
+
+def test_login():
+    username = "vamos"
+    password = "whitecaps"
+    with app.test_client() as unauth_client:
+        res = unauth_client.post('api/', data={
+            "username": username,
+            "password": password
+        }, follow_redirects=True)
+        assert res.status_code == 200
+        assert b"My Notes" in res.data
+
+def test_login_no_username():
+    username = ""
+    password = "whitecaps"
+    with app.test_client() as unauth_client:
+        res = unauth_client.post('api/', data={
+            "username": username,
+            "password": password
+        }, follow_redirects=True)
+        assert res.status_code == 200
+        assert b"Username is required" in res.data
+
+def test_login_no_password():
+    username = "vamos"
+    password = ""
+    with app.test_client() as unauth_client:
+        res = unauth_client.post('api/', data={
+            "username": username,
+            "password": password
+        }, follow_redirects=True)
+        assert res.status_code == 200
+        assert b"Password is required" in res.data
+
+def test_login_invalid_password():
+    username = "vamos"
+    password = "white"
+    with app.test_client() as unauth_client:
+        res = unauth_client.post('api/', data={
+            "username": username,
+            "password": password
+        }, follow_redirects=True)
+        assert res.status_code == 200
+        assert b"Password must be at least 6 characters" in res.data
+
+def test_login_with_nothing():
+    username = ""
+    password = ""
+    with app.test_client() as unauth_client:
+        res = unauth_client.post('api/', data={
+            "username": username,
+            "password": password
+        }, follow_redirects=True)
+        assert res.status_code == 200
+        assert b"Username is required" in res.data
+        assert b"Password is required" in res.data # Making sure we see both prompts
+
+def test_notes_post_and_view_after(client):
+    test_title = "hi"
+    test_note = "everybody"
+    with app.app_context():
+        db.drop_all() # start fresh in case this note somehow exists already LOL
+        db.create_all()
+        note = Note(title=test_title, content=test_note)
+        db.session.add(note)
+        db.session.commit()
+    res = client.get('api/all-notes', follow_redirects=True)
+    assert res.status_code == 200
+    assert b"hi" in res.data
+    assert b"everybody" in res.data
+
+def test_notes_post_and_delete_after(client):
+    test_title = "Muy"
+    test_note = "Importante!"
+    with app.app_context():
+        note = Note(title=test_title, content=test_note)
+        db.session.add(note)
+        db.session.commit()
+        note_id = note.id
+    res = client.post(f'api/delete_note/{note_id}', follow_redirects=True)
+    assert res.status_code == 200
+    assert b"Note deleted!" in res.data
