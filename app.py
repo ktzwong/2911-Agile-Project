@@ -9,6 +9,11 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///calendar.db"
 app.secret_key = "secret123"
 app.instance_path = Path(" ").resolve()
 
+<<<<<<< HEAD
+=======
+app.register_blueprint(api_bp, url_prefix="/api")
+
+>>>>>>> development
 # Initialize SQLAlchemy
 db.init_app(app)
 
